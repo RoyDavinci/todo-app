@@ -1,0 +1,53 @@
+h1 {
+	text-transform: uppercase;
+}
+h4 {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 20px;
+}
+h4 span {
+	text-transform: capitalize;
+	font-weight: normal;
+	margin: 0px 10px;
+}
+h4 span p {
+	font-weight: bold;
+	margin: 10px 0px;
+}
+.time {
+	margin: 10px 0px;
+	font-size: 20px;
+	display: flex;
+	text-align: center;
+}
+.time p {
+	font-weight: bold;
+}
+.time span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.note-para {
+	font-size: 20px;
+	font-weight: bold;
+}
+.button {
+	margin: 15px 0px;
+}
+.button button {
+	width: 45%;
+	padding: 10px;
+	color: white;
+	text-align: center;
+	border-radius: 5px;
+}
+.update {
+	background-color: #5bc0de;
+	margin-right: 10px;
+}
+.delete {
+	background-color: #d9534f;
+}

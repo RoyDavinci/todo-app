@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./list.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Moment from "react-moment";
 
 const List = () => {
 	const [todos, setTodos] = useState([]);
@@ -9,7 +10,6 @@ const List = () => {
 	useEffect(() => {
 		const getTodos = async () => {
 			let { data } = await axios.get("http://localhost:3500/api/v1");
-			console.log(data.data);
 			setTodos(data.data);
 		};
 		getTodos();
@@ -21,9 +21,14 @@ const List = () => {
 			<ul>
 				{todos.map((todo) => {
 					return (
-						<Link to={`/update/${4}`}>
-							<li key={todo.id}>
-								<p>{todo.name}</p> <button></button>
+						<Link to={`/detail/${todo.todo_id}`} key={todo.todo_id}>
+							<li>
+								<p>{todo.name}</p>{" "}
+								{todo?.start_date !== null ? (
+									<Moment format='YYYY/MM/DD'>{todo.start_date}</Moment>
+								) : (
+									<p>No Date</p>
+								)}
 							</li>
 						</Link>
 					);
