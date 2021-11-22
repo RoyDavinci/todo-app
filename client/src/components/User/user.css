@@ -52,6 +52,9 @@ h3,
 	font-size: 16px;
 	color: #7592de;
 }
+.category-bar h3 {
+	text-transform: capitalize;
+}
 .today-taskbar {
 	display: flex;
 	flex-direction: column;

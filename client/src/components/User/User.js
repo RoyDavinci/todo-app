@@ -9,8 +9,9 @@ import { useGlobalContext } from "../../context";
 import Button from "@mui/material/Button";
 
 const User = () => {
-	const { user } = useGlobalContext();
+	const { user, categories } = useGlobalContext();
 	const { id } = useParams();
+
 	return (
 		<div className='user'>
 			<header>
@@ -36,24 +37,28 @@ const User = () => {
 							</IconButton>
 						</>
 					) : (
-						<Button>Login</Button>
+						<Button>
+							<Link to='/login'>Login</Link>
+						</Button>
 					)}
 				</div>
 			</header>
 
 			{user?.name ? <h1>What's Up, {user?.name}</h1> : <h1>Welcome, User </h1>}
+			<p className='blue para'>
+				<Link to='/projects'>ALL CATEGORIES</Link>
+			</p>
+			{categories.map((category) => {
+				return (
+					<div className='categories' key={category.category_id}>
+						<div className='category-bar'>
+							<p>40 Tasks</p>
+							<h3>{category.category_name}</h3>
+						</div>
+					</div>
+				);
+			})}
 
-			<p className='blue para'>CATEGORIES</p>
-			<div className='categories'>
-				<div className='category-bar'>
-					<p>40 Tasks</p>
-					<h3>Business</h3>
-				</div>
-				<div className='category-bar'>
-					<p>18 Tasks</p>
-					<h3>Personal</h3>
-				</div>
-			</div>
 			<div className='today'>
 				<div className='tasks'>
 					<h3 className='blue'>TODAY'S TASKS</h3>

@@ -21,6 +21,9 @@ const List = () => {
 		return (
 			<>
 				<div className='list'>
+					<Link to={`/user/${id}`} className='back'>
+						<i className='fa fa-arrow-left' aria-hidden='true'></i>
+					</Link>
 					<div className='list-container'>
 						<img src={Create} alt='' className='create' />
 						<h1 className='initial-header'>Create A New Todo</h1>
@@ -39,6 +42,9 @@ const List = () => {
 		<>
 			{todos.length > 0 ? (
 				<div className='list'>
+					<Link to={`/user/${id}`} className='back'>
+						<i className='fa fa-arrow-left' aria-hidden='true'></i>
+					</Link>
 					<div className='list-container'>
 						<h1>All Tasks</h1>
 						<ul>

@@ -7,6 +7,7 @@ import Detail from "./components/Detail/Detail";
 import Home from "./components/Home/Home";
 import Auth from "./components/Auth/Auth";
 import User from "./components/User/User";
+import ProjectList from "./components/project/List/List";
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 					<Route path='/update/:id/:id' element={<Update />}></Route>
 					<Route path='/:id/detail/:id' element={<Detail />}></Route>
 					<Route path='/create/:id' element={<Create />}></Route>
+					<Route path='/projects' element={<ProjectList />}></Route>
 				</Routes>
 			</BrowserRouter>
 			<div className='container'></div>

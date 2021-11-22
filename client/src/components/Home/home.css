@@ -14,10 +14,10 @@
 	align-items: center;
 }
 
-@media screen and (max-width:767px){
-.image img {
-	height: 300px;
-}
+@media screen and (max-width: 767px) {
+	.image img {
+		height: 300px;
+	}
 }
 
 .icons,
@@ -27,7 +27,7 @@
 	align-items: center;
 	text-align: center;
 }
-section p {
+#section p {
 	text-align: center;
 	font-weight: bold;
 	font-size: 25px;
