@@ -1,0 +1,85 @@
+.user {
+	background-color: #3450a1;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	color: #7592de !important;
+	font-size: 20px !important;
+}
+header,
+.blue,
+.today {
+	margin: 0px 8px;
+}
+.MuiSvgIcon-root {
+	color: #7592de !important;
+	font-size: 30px !important;
+}
+.blue {
+	color: #7592de;
+}
+h1,
+h3,
+.bar > p {
+	color: white;
+}
+.user h1 {
+	text-transform: capitalize;
+	font-size: 30px;
+	margin: 20px 8px;
+}
+.categories {
+	display: flex;
+	margin: 10px 0px;
+}
+.category-bar {
+	margin-left: 10px;
+	margin-bottom: 30px;
+	margin-right: 10px;
+	background-color: #041955;
+	padding: 30px 40px;
+	width: 50%;
+	border-radius: 10px;
+	font-size: 23px;
+}
+.category-bar p {
+	font-size: 16px;
+	color: #7592de;
+}
+.today-taskbar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.today-taskbar .bar {
+	display: flex;
+	margin: 5px 0px;
+	background-color: #041955;
+	padding: 15px;
+	border-radius: 10px;
+	width: 90%;
+}
+.today-taskbar .bar button {
+	border: 1px solid #1a61d1;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.today-taskbar .bar p {
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+}
+.tasks {
+	display: flex;
+	justify-content: space-between;
+}

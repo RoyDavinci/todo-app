@@ -1,10 +1,10 @@
 import React from "react";
-import HomeImage from "../design/undraw_personal_notebook_re_d7dc.svg";
+import HomeImage from "../../design/undraw_personal_notebook_re_d7dc.svg";
 import "./home.css";
 import { Link } from "react-router-dom";
-import Facebook from "../design/icons8-facebook-96.png";
-import Twitter from "../design/icons8-twitter-48.png";
-import Google from "../design/icons8-google-30.png";
+import Facebook from "../../design/icons8-facebook-96.png";
+import Twitter from "../../design/icons8-twitter-48.png";
+import Google from "../../design/icons8-google-30.png";
 
 const Home = () => {
 	return (

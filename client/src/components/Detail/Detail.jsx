@@ -1,33 +1,39 @@
 import React, { useState, useEffect } from "react";
-import "./list.css";
+import "../List/list.css";
 import "./detail.css";
 import axios from "axios";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import Moment from "react-moment";
 
 const Detail = () => {
-	const { id } = useParams();
+	const { pathname } = useLocation();
+	const id = pathname.split("/")[1];
+	const todo = pathname.split("/")[3];
 	const navigate = useNavigate();
 	const [item, setItem] = useState([]);
 
 	useEffect(() => {
 		const getItem = async () => {
-			const response = await axios.get(`http://localhost:3500/api/v1/${id}`);
-
+			const response = await axios.get(
+				`http://localhost:3500/api/v1/${id}/${todo}`
+			);
+			console.log(response);
 			setItem(response.data.data);
 		};
 		getItem();
-	}, [id]);
+	}, [id, todo]);
 
 	const deleteItem = async (id) => {
-		const response = await axios.delete(`http://localhost:3500/api/v1/${id}`);
-		navigate("/todo");
+		const response = await axios.delete(
+			`http://localhost:3500/api/v1/${id}/${todo}`
+		);
+		navigate(`/${id}/todo/${todo}`);
 		console.log(response);
 	};
 
 	return (
 		<div className='list'>
-			<Link to='/todo'>
+			<Link to={`/${id}/todo/${todo}`}>
 				<i className='fa fa-arrow-left' aria-hidden='true'></i>
 			</Link>
 			<h1>{item[0]?.name}</h1>
@@ -54,7 +60,7 @@ const Detail = () => {
 
 			<div className='button'>
 				<button className='update'>
-					<Link to={`/update/${id}`}>Update</Link>
+					<Link to={`/update/${id}/${todo}`}>Update</Link>
 				</button>
 				<button
 					onClick={() => {

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import "./list.css";
+import "../List/list.css";
 import "./create.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Create = () => {
+	const { pathname } = useLocation();
+	const id = pathname.split("/")[2];
 	const [values, setValues] = useState({
 		name: "",
 		place: "",
@@ -26,14 +28,14 @@ const Create = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { name, place, start, note } = values;
-		const response = await axios.post("http://localhost:3500/api/v1", {
+		const response = await axios.post(`http://localhost:3500/api/v1/${id}`, {
 			name,
 			place,
 			start_date: start,
 			note,
 		});
 		console.log(response);
-		navigate("/todo");
+		navigate(`/${id}/todo/${id}`);
 	};
 
 	return (

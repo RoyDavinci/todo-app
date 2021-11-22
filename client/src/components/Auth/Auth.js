@@ -1,20 +1,18 @@
 import React, { useState } from "react";
-// import Cookies from "universal-cookie";
 import axios from "axios";
 import "./auth.css";
 import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../context";
 
 const initialState = {
 	username: "",
 	email: "",
 	password: "",
 };
-
-// const cookies = new Cookies();
-
 const Auth = () => {
 	const [signup, setSignup] = useState(true);
 	const [form, setForm] = useState(initialState);
+	const { setState } = useGlobalContext();
 
 	const navigate = useNavigate();
 	const handleSubmit = async (e) => {
@@ -28,18 +26,9 @@ const Auth = () => {
 			password,
 			email,
 		});
-		console.log(data);
-		navigate("/todo");
 
-		// cookies.set("token", token);
-		// cookies.set("userId", userId);
-		// cookies.set("username", username);
-
-		// if (signup) {
-		// 	cookies.set("hashedPassword", hashedPassword);
-		// }
-
-		// window.location.reload();
+		setState(data);
+		navigate(`/user/${data?.id}`);
 	};
 	const handleChange = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });

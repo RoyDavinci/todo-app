@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import "./list.css";
-import "./create.css";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "./List/list.css";
+import "./Create/create.css";
 import axios from "axios";
 
 const Update = () => {
+	const { pathname } = useLocation();
+	const id = pathname.split("/")[2];
+	const todo = pathname.split("/")[3];
 	const [values, setValues] = useState({
 		name: "",
 		place: "",
@@ -22,20 +25,21 @@ const Update = () => {
 
 	const navigate = useNavigate();
 
-	const { id } = useParams();
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { name, start, note, place } = values;
 		try {
-			const response = await axios.put(`http://localhost:3500/api/v1/${id}`, {
-				name,
-				start_date: start,
-				note,
-				place,
-			});
+			const response = await axios.put(
+				`http://localhost:3500/api/v1/${id}/${todo}`,
+				{
+					name,
+					start_date: start,
+					note,
+					place,
+				}
+			);
 			console.log(response);
-			navigate("/todo");
+			navigate(`/${id}/todo/${todo}`);
 		} catch (error) {
 			console.log(error);
 		}
@@ -43,7 +47,9 @@ const Update = () => {
 
 	useEffect(() => {
 		const getItem = async () => {
-			let { data } = await axios.get(`http://localhost:3500/api/v1/${id}`);
+			let { data } = await axios.get(
+				`http://localhost:3500/api/v1/${id}/${todo}`
+			);
 			setValues({
 				name: data.data[0].name,
 				place: data.data[0].place,
@@ -51,7 +57,7 @@ const Update = () => {
 			});
 		};
 		getItem();
-	}, [id]);
+	}, [id, todo]);
 
 	return (
 		<div className='list'>
