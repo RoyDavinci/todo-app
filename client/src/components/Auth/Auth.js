@@ -12,6 +12,8 @@ const initialState = {
 const Auth = () => {
 	const [signup, setSignup] = useState(true);
 	const [form, setForm] = useState(initialState);
+	const [error, setError] = useState(false);
+	const [message, setMessage] = useState("");
 	const { setState } = useGlobalContext();
 
 	const navigate = useNavigate();
@@ -26,9 +28,18 @@ const Auth = () => {
 			password,
 			email,
 		});
-
+		console.log(data);
 		setState(data);
-		navigate(`/user/${data?.id}`);
+		if (
+			data.message === "Incorrect Password" ||
+			data.message === "Username Incorrect"
+		) {
+			setError(!error);
+			setMessage(data.message);
+			navigate("/login");
+		} else {
+			navigate(`/user/${data?.id}`);
+		}
 	};
 	const handleChange = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });
@@ -52,6 +63,11 @@ const Auth = () => {
 							onChange={handleChange}
 							required
 						/>
+						{error && message === "Username Incorrect" ? (
+							<small>{message}</small>
+						) : (
+							""
+						)}
 					</div>
 					{signup && (
 						<div className='auth__form-container_fields-content_input'>
@@ -76,6 +92,11 @@ const Auth = () => {
 							onChange={handleChange}
 							required
 						/>
+						{error && message === "Incorrect Password" ? (
+							<small>{message}</small>
+						) : (
+							""
+						)}
 					</div>
 
 					<div className='auth__form-container_fields-content_button'>

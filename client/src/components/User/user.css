@@ -35,8 +35,11 @@ h3,
 	margin: 20px 8px;
 }
 .categories {
+	/* flex: 1; */
 	display: flex;
+	overflow: auto;
 	margin: 10px 0px;
+	flex-wrap: wrap;
 }
 .category-bar {
 	margin-left: 10px;
@@ -47,6 +50,7 @@ h3,
 	width: 50%;
 	border-radius: 10px;
 	font-size: 23px;
+	display: flex;
 }
 .category-bar p {
 	font-size: 16px;

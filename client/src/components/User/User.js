@@ -46,7 +46,7 @@ const User = () => {
 
 			{user?.name ? <h1>What's Up, {user?.name}</h1> : <h1>Welcome, User </h1>}
 			<p className='blue para'>
-				<Link to='/projects'>ALL CATEGORIES</Link>
+				<Link to={`/projects/${id}`}>ALL CATEGORIES</Link>
 			</p>
 			{categories.map((category) => {
 				return (
